@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: template
+  name: pedding-clients
   namespace: viptech
   labels:
-    app: template
+    app: pedding-clients
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: template
+      app: pedding-clients
   template:
     metadata:
       labels:
-        app: template
+        app: pedding-clients
     spec:
       containers:
-        - name: template
-          image: juca266/template:latest
+        - name: pedding-clients
+          image: juca266/pedding-clients:latest
           ports:
             - containerPort: 4000
           env:

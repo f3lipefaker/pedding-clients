@@ -4,6 +4,7 @@ import cors from 'cors';
 import http from 'http';
 import { config as dotenvConfig } from 'dotenv';
 import { pool } from './src/utils/index.js';
+import { startPendingClientsCron } from './src/jobs/pendingClients.cron.js'; 
 
 dotenvConfig();
 
@@ -23,14 +24,10 @@ app.use((req, res, next) => {
 });
 
 const PORT = process.env.PORT;
-const MODE = process.env.MODE;
-const HOST = process.env.ADDRESS;
 const server = http.createServer(app);
 
-import auth from './src/routes/auth/index.js';
-
-app.use('/api/v1', auth);
-
+//app.use('/api/v1', auth);
+startPendingClientsCron();
 
 server.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);

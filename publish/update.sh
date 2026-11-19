@@ -1,5 +1,5 @@
-image="template" 
-namespace="viptech"
+image="pedding-clients" 
+namespace="ares"
 
 echo "Removendo imagens anteriores..."
 docker rmi -f ${image}
